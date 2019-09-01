@@ -1,10 +1,11 @@
 # Site settings
 title: dong dio
-description:cccc
+description: dio
 # baseurl: "/particle" # the subpath of your site, e.g. /blog
-# url: "vietdonggithub.github.io
+# url: "vietdonggithub.github.io"
+
 # User settings
-username: Lorem Ipsum
+username: dong dio
 user_description: Software Engineer at Lorem Ipsum Dolor
 user_title: Mauricio Urraco
 email: mauriurraco@gmail.com
