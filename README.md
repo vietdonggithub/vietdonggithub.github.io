@@ -1,243 +1,139 @@
+# Prologue - Jekyll Theme
+
+[![Gem Version](https://badge.fury.io/rb/jekyll-theme-prologue.svg)](https://badge.fury.io/rb/jekyll-theme-prologue)
+
+![Prologue Theme](assets/images/screenshot.png "Prologue Theme Screenshot")
+
+This is Prologue, a simple, single page responsive site template from [HTML5 UP](https://html5up.net/prologue), now available as a blog-aware Jekyll theme from [Chris Bobbe](https://chrisbobbe.github.io). It features a clean, minimalistic design and a sticky sidebar with navigation-linked scrolling.
+
+**Demo**: https://chrisbobbe.github.io/jekyll-theme-prologue/
+
+# Added Features
+
+* **Blogging and multi-page features you expect from Jekyll**
+* Compatible with GitHub Pages
+* **[Formspree.io](https://formspree.io/) contact form integration** - just add your email to the `_config.yml` and it works!
+* Build your homepage with **custom scrolly sections** in the _sections folder
+ * Set a **cover photo** for any section (not just the first), with alt text for screen readers and SEO
+* Add your **social profiles** easily in `_config.yml`.
+* Automatic search engine optimization (SEO) **meta tags** based on info you provide in `_config.yml` and frontmatter
+* **Google Analytics** built-in; just put your [Tracking ID](https://support.google.com/analytics/answer/1008080?hl=en) in `_config.yml` as `google_analytics`
+* Custom **404 page** (called 404.html; to activate, move it to your project directory).
+
+# Installation
+
+There are two ways to get started (choose one):
+
+1. **Install the [jekyll-theme-prologue gem](https://rubygems.org/gems/jekyll-theme-prologue).** Instructions are in the [Jekyll docs](https://jekyllrb.com/docs/themes/#installing-a-theme). After running `bundle install`, you can find the theme files by running `open $(bundle show jekyll-theme-prologue)`.  A sample working `_config.yml` file ships with the gem; if you want to activate it, move it to your project's root directory. It will do nothing until you move it there, replacing the default `_config.yml` file.
+2. **Fork or clone the [GitHub repository](https://github.com/chrisbobbe/jekyll-theme-prologue).** If you want to use [GitHub Pages](https://pages.github.com/), create a branch named `gh-pages`, and replace `theme: jekyll-theme-prologue` with `remote_theme: chrisbobbe/jekyll-theme-prologue` in the provided `_config.yml` ([GitHub Pages now supports open-source themes on GitHub](https://github.com/blog/2464-use-any-theme-with-github-pages)).
+
+Next, make sure that `url` and `base_url` are set for your own website in `_config.yml`. For local testing, make them both blank. Add a photo avatar to your project, then set `avatar: path/to/your/avatar.jpg` in _config.yml; for example, `avatar: assets/images/avatar.jpg` (48x48 pixels works best). Poke around the sample `_config.yml` file to see how you can add your social profiles.
+
+# Build your homepage
+
+1. **Your `_config.yml` file must include the following line or your homepage won't work**: `collections: [sections]`. This tells Jekyll to look in the _sections folder (which you will create) for your content and render it all on one page.
+
+2. **Create a `_sections` folder** in your project's root directory and start adding content to your homepage. Set a cover photo in any of the sections by adding `cover-photo: path/to/photo.jpg` and `cover-photo-alt: your alt text here` to the section's frontmatter. Sample content is provided in the [GitHub repository](https://github.com/chrisbobbe/jekyll-theme-prologue/tree/master/_sections).
+
+All new sections should be added as html or Markdown documents in the `_sections` folder. The following section variables can be set with [frontmatter](https://jekyllrb.com/docs/frontmatter/):
+- `title` (required)
+- `order` (required; orders the sequence of sections on the page. Example: `1`)
+- `cover-photo` (optional; sets a background image for the section. Example: `assets/images/banner.jpg`)
+- `cover-photo-alt` (required if using a cover photo. Describes the photo for screen readers and SEO; e.g. "Dome of Light art installation, Kaohsiung, Taiwan")
+- `icon` (optional; see [Font Awesome](https://fontawesome.com/icons) for icon codes. Example: `fa-github`)
+- `icon-style` (optional; "solid" is default, "regular" for outline style icons, or "brands" for logos)
+- `auto-header` (optional; "use-title" is default, "none" for no header, or custom header text)
+- `hide` (optional; if `true`, the section won't appear)
+
+# Start blogging!
+
+Jekyll has great resources to get you started writing blog posts. Check out [this Jekyll Docs page](https://jekyllrb.com/docs/posts/) first. When you've written a post or two, copy the following into a new file in your project directory called `blog.html`, and you'll see a link to your blog from the homepage:
+
+```
 ---
+layout: blog
+title: My Blog
+---
+```
+
+-- and that's it!
+
+# Add a page
+
+To add a page, just make a new .html or .md file in your project directory. There's an example called `reading-list` [provided](https://github.com/chrisbobbe/jekyll-theme-prologue/blob/master/reading-list.md) with the GitHub repository. Add this frontmatter:
+
+```
+---
+title: My New Page
 layout: page
-title: 关于
-permalink: /about
 ---
-## 开始
+```
 
-1. Fork [wu-kan/wu-kan.github.io](https://github.com/wu-kan/wu-kan.github.io)到你的仓库，并在设置里开启gh-pages
-2. 修改_config.yml为你自己的信息
-3. 删除_post/下的博文和public/image/文件夹下的图片，开始写你自己的文章
+You can also set these page variables in the frontmatter, if you want:
+- `subtitle`
+- `order` (orders links in the nav menu, e.g. `1`)
+- `icon` (optional; see [Font Awesome](https://fontawesome.com/icons) for icon codes. Example: `fa-github`)
+- `icon-style` (optional; "solid" is default, "regular" for outline style icons, or "brands" for logos)
+- `hide` (optional; if `true`, a link won't appear in the nav menu. All this does is remove the nav link; your page will still be served to anyone who has the URL.)
 
-详细配置可以参见[这篇博文](https://wu-kan.github.io/posts/博客搭建/基于Jekyll搭建个人博客)
+**This same set of frontmatter variables (including `title`) can also be set in `index.md` and `blog.html`.** You may want to give them titles, or hide the homepage link with `hide: true` if the homepage is the only page.
 
-## 声明
+For advanced SEO, this theme also lets you add `permalink` (see [Jekyll Docs](https://jekyllrb.com/docs/permalinks/#where-to-configure-permalinks)), `robots` (string, e.g. "noindex, nofollow"), and `canonical` (boolean; true is default) to any page or post.
 
-除特别声明或转载外，所有博文采用[署名-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)协议进行许可。
+# Contributing
 
-博客基于[MIT License](https://github.com/wu-kan/wu-kan.github.io/blob/master/LICENSE)开源于[GitHub](https://github.com/wu-kan/wu-kan.github.io)。
+Please feel free to submit issues and feature requests!
 
-## 致谢
+# Credits
 
-托管于[Github Pages](https://pages.github.com/)，感谢。
+Thanks to @andrewbanchich for his many Jekyll adaptations of HTML5 UP's elegant themes, which helped and inspired me, and of course many thanks to HTML5 UP.
 
-博客引擎来自于[jekyll/jekyll](https://github.com/jekyll/jekyll)，感谢。
+Original README from HTML5 UP:
 
-CDN加速服务来自于[jsdelivr](https://www.jsdelivr.com/)，感谢。
+```
+Prologue by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
-博客主题基于[poole/lanyon](https://github.com/poole/lanyon)，感谢。
 
-图标库来自于[<i class="fab fa-font-awesome"></i>fontawesome-free](https://fontawesome.com/)，感谢。
+This is Prologue, a simple, single page responsive site template. It features a
+clean, minimalistic design and a sticky sidebar with navigation-linked scrolling.
 
-留言和阅读量系统来自于[Valine](https://valine.js.org/)和[LeanCloud](https://leancloud.cn/)，感谢。
+Demo content images* are courtesy of the ridiculously talented Felicia Simion. Check out
+more of her amazing work over at deviantART:
 
-页面统计来自于[不蒜子](http://busuanzi.ibruce.info/)，感谢。
+http://ineedchemicalx.deviantart.com/
 
-博文目录插件来自于[ghiculescu/jekyll-table-of-contents](https://github.com/ghiculescu/jekyll-table-of-contents)，感谢。
+(* = Not included! Only meant for use with my own on-site demo, so please do NOT download
+and/or use any of Felicia's work without her explicit permission!)
 
-博客搜索插件来自于[christian-fei/Simple-Jekyll-Search](https://github.com/christian-fei/Simple-Jekyll-Search)，感谢。
+Demo banner images* courtesy of Unsplash, a radtastic collection of CC0 (public domain)
+images you can use for pretty much whatever.
 
-代码高亮及插件来自于[PrismJS](https://prismjs.com/)，感谢。
+(* = Not included)
 
-Live2D来自于[stevenjoezhang/live2d-widget](https://github.com/stevenjoezhang/live2d-widget)，感谢。
+AJ
+aj@lkn.io | @ajlkn
 
-头像翻转效果来自于[leopardpan/leopardpan.github.io](https://github.com/leopardpan/leopardpan.github.io)，感谢。
+PS: Not sure how to get that contact form working? Give formspree.io a try (it's awesome).
 
-## Feature/Todo
 
-从[这个页面](https://magical-girl.site/)得到的灵感，目标是博客上除了文章和作为导航的Live2D之外尽量不出现其他的模块。
+Credits:
 
-- [x] 完成博客文章标签页
-- [ ] 完成博客文章分类页（分类暂时和标签没区别）
-- [ ] 重写博客首页，做一个有意思的封面，不再显示文章
-- [x] 加入评论系统，暂时考虑用valine+leancloud实现
-  - [x] 基于valine的阅读量统计
-- [x] 不蒜子统计
-- [x] [<i class="fab fa-font-awesome"></i>fontawesome-free](https://fontawesome.com/)
-- [x] 全站搜索
-- [x] [ribbon动态背景](https://github.com/hustcc/ribbon.js)
-- [x] 调整代码块风格，并加上代码选中按钮
-- [x] 加入可以自动展开、标号的目录
-  - [x] 目录标号
-  - [ ] 自动展开
-- [x] mermaid
-  - [x] Markdown代码扩展
-- [x] $\KaTeX$
-- [x] Live2D
-  - [x] 加上切换Live2D显示/关闭的按钮
-  - [ ] 使用自己搭建的Live2D后端API
-    - [ ] 收集一些Live2D Model
+	Demo Images:
+		Felicia Simion (ineedchemicalx.deviantart.com)
+		Unsplash (unsplash.com)
 
-## 初心
+	Icons:
+		Font Awesome (fortawesome.github.com/Font-Awesome)
 
-我曾做什么？
-
-我正做什么？
-
-我想做什么？
-
-我该做什么？
-
-> 章北海感到父亲的灵魂从冥冥中降落到飞船上，与他融为一体，他按动了操作界面上那个最后的按钮，心中默念出那个他用尽一生的努力所追求的指令：
-> > “‘自然选择’，前进四！”
-
-## 历程
-
-### 2019-08-30 v2.3.0
-
-- 更换cdn为[jsdelivr](https://www.jsdelivr.com/)
-- 升级fontaswsomev4.7.0至fontawesome-freev5.10.2，支持的图标数量由675增加至1535
-- 所有脚本和插件JSLoader化，增加移植性和访问速度
-- 界面调整
-  - 正文部分增加背景，从而减少动态ribbon背景影响的阅读体验
-  - sidebar微调
-- layout删除document页
-
-#### 已知bug
-
-- [ ] 配置选项body.overlay失效，正文不跟随侧边栏移动。产生原因是在page中为了加快页面内容显示，将正文移动至sidebar上面
-- [ ] 使用autoloader引入js时，prismjs的toolbar插件会失效
-
-### 2019-07-06 v2.2.1
-
-- prismjs使用unpkg.com加速
-- 删去layout中的404页（因为只需要引入js脚本）
-
-### 2019-06-28 v2.2.0
-
-- 博客结构微调
-- 将大部分博客用到的jscdn换成unpkg.com，感谢其提供的加速服务~
-- 留言板加入友链
-
-### 2019-05-03 v2.1.4
-
-- valine更新
-  - 现在支持记录访问者IP
-  - 每次重新拉取评论者头像
-
-### 2019-04-29 v2.1.3
-
-- 页面样式微调，将masthead调矮，将标题字号改小
-
-### 2019-03-20 v2.1.2
-
-- 修复sidebar展开时回到顶部的问题
-
-### 2019-03-18 v2.1.1
-
-- 一些界面上的小调整
-
-### 2019-03-01 v2.1.0
-
-- 调整某些插件
-- layout新增document页，一个只开启$\KaTeX$而不引入任何其他样式的页面，主要是方便自己生成可打印的ICPC模板和一些课程报告
-- layout新增404页，可选择开启腾讯公益
-- mermaid支持markdown扩展了
-
-### 2019-02-24 v2.0.1
-
-- sidebar的触发按钮样式换成了bars，原来的样式更像是菜单
-- 一点页面上的小调整
-
-### 2019-02-23 v2.0.0
-
-- 重构完成
-- 正式开源
-
-### 2019-02-19
-
-- 模块化·初步
-- 博客搜索实现
-
-### 2019-02-01
-
-- [署名-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)。
-- 社会主义核心价值观点击特效，感谢[dujin](https://www.dujin.org/9088.html)。
-- 打赏。
-
-### 2019-01-31
-
-- mathjax换katex
-- post访问量统计
-
-### 2019-01-24
-
-- 代码高亮
-- 选中代码按钮
-- 代码语言按钮
-
-### 2019-01-23
-
-加入文章目录到SideBar
-
-### 2019-01-22
-
-- 加入Ribbon动态背景
-
-### 2019-01-21
-
-- 加入valine评论系统，留言页实现
-
-### 2019-01-20
-
-- 加入归档页
-
-### 2019-01-19
-
-- 加入标签页
-
-### 2019-01-18
-
-- 开始用Jekyll重构整个博客
-
-折腾吧，折腾是才最好玩的。
-
-### 2019-01-13
-
-- 更换Next.Muse主题模板
-- 少量修改页面自定义样式布局，主要是sidebar
-- 将网易云音乐iframe移动到description，感觉挺有意思的
-
-### 2019-01-12
-
-- 将NexT版本更新至v6.7.0
-
-### 2018-12-23
-
-- 页面字体修改
-- 网易云音乐iframe加入SideBar
-
-### 2018-12-16
-
-- 引入mermaid支持
-- 修复部分Latex渲染的Bug
-
-### 2018-11-24
-
-- 将NexT版本更新至v6.5.0
-- 用Valine更换失效的Gitment评论系统
-- 加入Leancloud和busuanzi页面统计
-
-### 2018-11-20
-
-- 谷歌，百度搜索页面提交
-
-### 2018-11-18
-
-- 全局透明化
-- 动态背景
-- 页面加载动画
-- Latex支持
-
-### 2018-11-16
-
-- 主题由默认的Landspace换至NexT v5.1.4
-- 使用Next.Pisces主题模板
-- 开始对网页进行自定义样式布局
-- 尝试加入Gitment，但初始化总是不成功
-
-### 2018-11-15
-
-- 在Github上成功部署博客
-- 成功迁移[原CSDN博客](https://blog.csdn.net/w_weilan)上的所有文章
-- live2d
+	Other
+		jQuery (jquery.com)
+		html5shiv.js (@afarkas @jdalton @jon_neal @rem)
+		CSS3 Pie (css3pie.com)
+		background-size polyfill (github.com/louisremi)
+		Respond.js (j.mp/respondjs)
+		jquery.scrolly (@ajlkn)
+		jquery.scrollzer (@ajlkn)
+		Skel (skel.io)
+```
