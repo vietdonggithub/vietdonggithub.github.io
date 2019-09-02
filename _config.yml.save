@@ -1,5 +1,5 @@
 # Site settings
-title: dong dong
+title: dio
 description: dio
 # baseurl: "/particle" # the subpath of your site, e.g. /blog
 # url: "vietdonggithub.github.io"
@@ -7,7 +7,7 @@ description: dio
 # User settings
 username: dong dio
 user_description: Software Engineer at Lorem Ipsum Dolor
-user_title: dong dau dat
+user_title: dio
 email: vietdong@gmail.com
 # twitter_username: dong dong
 # github_username:  dong dong
